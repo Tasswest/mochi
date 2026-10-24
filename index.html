@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mochi</title>
+<meta name="description" content="Un petit compagnon pour Mac qui vit sur ton Dock et t'aide à tenir ta vie en ordre : habitudes, agenda, études, budget.">
+<link rel="icon" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f2ede3; --paper-deep: #e9e2d4; --ink: #1d1b18; --soft: #6f6a62; --faint: #a39d92;
+    --rule: #d6cfc2; --accent: #e5733a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #1c1a17; --paper-deep: #15130f; --ink: #ece6da; --soft: #a8a194; --faint: #6f6a62; --rule: #36322c;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #1c1a17; --paper-deep: #15130f; --ink: #ece6da; --soft: #a8a194; --faint: #6f6a62; --rule: #36322c;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: "Newsreader", Georgia, serif; font-size: 19px; line-height: 1.55;
+  }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 16px; }
+  .caps { font: 500 11px/1 "IBM Plex Mono", ui-monospace, monospace; letter-spacing: .16em; text-transform: uppercase; color: var(--soft); }
+  header { padding: 72px 0 40px; border-bottom: 1px solid var(--rule); }
+  .row { display: flex; gap: 18px; align-items: flex-end; flex-wrap: wrap; }
+  .blobs { display: flex; gap: 10px; margin-bottom: 36px; }
+  .blobs img { width: 46px; height: 46px; animation: bob 3.4s ease-in-out infinite; }
+  .blobs img:nth-child(2) { animation-delay: .4s } .blobs img:nth-child(3) { animation-delay: .8s }
+  .blobs img:nth-child(4) { animation-delay: 1.2s } .blobs img:nth-child(5) { animation-delay: 1.6s } .blobs img:nth-child(6) { animation-delay: 2s }
+  @keyframes bob { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(-5px) } }
+  @media (prefers-reduced-motion: reduce) { .blobs img { animation: none } }
+  h1 { font-weight: 400; font-size: clamp(54px, 11vw, 96px); line-height: .95; margin: 10px 0 18px; letter-spacing: -.02em; }
+  .lede { font-style: italic; color: var(--soft); font-size: 22px; max-width: 34em; margin: 0 0 32px; }
+  .download {
+    display: inline-flex; align-items: center; gap: 12px; padding: 14px 22px;
+    background: var(--ink); color: var(--paper); text-decoration: none; border-radius: 4px;
+    font: 500 13px/1 "IBM Plex Mono", monospace; letter-spacing: .14em; text-transform: uppercase;
+  }
+  .download:hover { background: var(--accent); color: #fff; }
+  .meta { color: var(--faint); font: 400 12px/1.5 "IBM Plex Mono", monospace; margin-top: 14px; }
+  figure { margin: 48px 0 0; }
+  figure img { width: 100%; height: auto; display: block; border: 1px solid var(--rule); border-radius: 6px; }
+  figcaption { margin-top: 10px; font-style: italic; color: var(--soft); font-size: 16px; }
+  section { padding: 56px 0; border-bottom: 1px solid var(--rule); }
+  h2 { font-weight: 400; font-size: 34px; margin: 8px 0 22px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px 40px; }
+  .grid h3 { font-weight: 500; font-size: 20px; margin: 0 0 4px; }
+  .grid p { margin: 0; color: var(--soft); font-size: 17px; }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 28px; }
+  @media (max-width: 680px) { .pair { grid-template-columns: 1fr } header { padding-top: 48px } }
+  ol { padding-left: 1.2em; } li { margin: 6px 0; }
+  code { font: 14px "IBM Plex Mono", monospace; background: var(--paper-deep); padding: 2px 6px; border-radius: 3px; word-break: break-all; }
+  footer { padding: 36px 0 60px; color: var(--faint); font-size: 15px; }
+  a { color: inherit; }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="blobs" aria-hidden="true">
+      <img src="img/drop.png" alt=""><img src="img/triangle.png" alt=""><img src="img/cloud.png" alt="">
+      <img src="img/ball.png" alt=""><img src="img/pill.png" alt=""><img src="img/flower.png" alt="">
+    </div>
+    <div class="caps">Pour Mac · gratuit</div>
+    <h1>Mochi</h1>
+    <p class="lede">Un petit compagnon qui vit sur ton Dock. Il tient tes habitudes, ton agenda, tes partiels et ton budget, et il change de mine selon ta semaine.</p>
+    <a class="download" href="https://github.com/Tasswest/mochi/releases/latest/download/Mochi.dmg">↓ Télécharger Mochi</a>
+    <div class="meta">macOS 14 Sonoma ou plus récent · puce Apple ou Intel · signé et vérifié par Apple</div>
+    <figure>
+      <img src="img/aujourdhui.jpg" alt="La page Aujourd'hui de Mochi : habitudes, tâches, échéances et emploi du temps" width="1600" height="1460">
+      <figcaption>La page « Aujourd'hui » : ce qui compte, sur une seule feuille.</figcaption>
+    </figure>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="caps">Ce qu'il fait</div>
+    <h2>Un carnet qui se range tout seul</h2>
+    <div class="grid">
+      <div><h3>Habitudes</h3><p>Tous les jours, certains jours, ou trois fois par semaine. Une grille mensuelle comme dans un bullet journal.</p></div>
+      <div><h3>Le matin</h3><p>À l'ouverture du Mac : la météo, ton premier cours et sa salle, les partiels à J-5. Puis humeur, énergie, motivation.</p></div>
+      <div><h3>Études</h3><p>Ton emploi du temps importé depuis le PDF, partiels, devoirs, candidatures, et un minuteur de concentration par matière.</p></div>
+      <div><h3>Budget</h3><p>Glisse ton relevé bancaire : les dépenses sont classées, et les graphiques montrent où passe ton argent.</p></div>
+      <div><h3>⌥ Espace</h3><p>Depuis n'importe quelle app : « réviser maths jeudi 18h ». C'est noté. Appuie deux fois pour dicter.</p></div>
+      <div><h3>Capsule temporelle</h3><p>Une lettre à toi-même, scellée jusqu'au jour choisi : après les partiels, dans six mois, dans un an.</p></div>
+    </div>
+    <div class="pair">
+      <figure style="margin:0"><img src="img/mois.jpg" alt="Le suivi mensuel des habitudes" loading="lazy" width="1600" height="965"><figcaption>Le mois</figcaption></figure>
+      <figure style="margin:0"><img src="img/budget.jpg" alt="La page Budget" loading="lazy"><figcaption>Le budget</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="caps">L'assistant</div>
+    <h2>Il parle, si tu veux</h2>
+    <p>Mochi fonctionne entièrement sans IA. Pour lui parler (« organise ma semaine », « range ce relevé »), branche le service de ton choix : une clé NVIDIA gratuite, Claude, OpenAI, Mistral, Groq, OpenRouter, Gemini, ou une IA qui tourne sur ton Mac avec LM Studio ou Ollama.</p>
+    <p style="color:var(--soft)">Tout reste sur ton Mac. Seule ta demande à l'assistant part vers le service que tu as choisi.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="caps">Installer</div>
+    <h2>Trente secondes</h2>
+    <ol>
+      <li>Télécharge <strong>Mochi.dmg</strong> et ouvre-le.</li>
+      <li>Glisse Mochi dans le dossier Applications.</li>
+      <li>Ouvre-le depuis le Launchpad : le personnage apparaît sur ton Dock.</li>
+    </ol>
+    <p style="color:var(--soft);font-size:17px">Reçu par WhatsApp et macOS refuse de l'ouvrir ? Télécharge-le plutôt ici. Sinon, dans le Terminal : <code>xattr -dr com.apple.quarantine /Applications/Mochi.app</code></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Mochi · fait à la main, pour Mac. Un souci ? Dans Mochi : menu du personnage → « Signaler un problème ».</div>
+</footer>
+</body>
+</html>
