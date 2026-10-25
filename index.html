@@ -59,6 +59,12 @@
   @media (max-width: 680px) { .pair { grid-template-columns: 1fr } header { padding-top: 48px } }
   ol { padding-left: 1.2em; } li { margin: 6px 0; }
   code { font: 14px "IBM Plex Mono", monospace; background: var(--paper-deep); padding: 2px 6px; border-radius: 3px; word-break: break-all; }
+  .strip { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; background: #f2ede3; border: 1px solid var(--rule); border-radius: 6px; padding: 10px; margin-top: 28px; }
+  .strip img { width: 120px; height: 120px; }
+  .new { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px 40px; }
+  .new h3 { font-weight: 500; font-size: 22px; margin: 0 0 6px; }
+  .new p { margin: 0; color: var(--soft); font-size: 17px; }
+  .tag { display: inline-block; font: 500 10px/1 "IBM Plex Mono", monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--paper); background: var(--accent); padding: 4px 6px; border-radius: 3px; vertical-align: 3px; margin-left: 8px; }
   footer { padding: 36px 0 60px; color: var(--faint); font-size: 15px; }
   a { color: inherit; }
 </style>
@@ -74,13 +80,33 @@
     <h1>Mochi</h1>
     <p class="lede">Un petit compagnon qui vit sur ton Dock. Il tient tes habitudes, ton agenda, tes partiels et ton budget, et il change de mine selon ta semaine.</p>
     <a class="download" href="https://github.com/Tasswest/mochi/releases/latest/download/Mochi.dmg">↓ Télécharger Mochi</a>
-    <div class="meta">macOS 14 Sonoma ou plus récent · puce Apple ou Intel · signé et vérifié par Apple</div>
+    <div class="meta">Version 1.1 · macOS 14 Sonoma ou plus récent · puce Apple ou Intel · signé et vérifié par Apple</div>
     <figure>
       <img src="img/aujourdhui.jpg" alt="La page Aujourd'hui de Mochi : habitudes, tâches, échéances et emploi du temps" width="1600" height="1460">
       <figcaption>La page « Aujourd'hui » : ce qui compte, sur une seule feuille.</figcaption>
     </figure>
   </div>
 </header>
+
+<section>
+  <div class="wrap">
+    <div class="caps">Nouveau dans la 1.1</div>
+    <h2>Ton Mochi, tes objectifs, un ami</h2>
+    <div class="new">
+      <div><h3>Dessine le tien</h3><p>Trace un contour d'un seul trait et choisis sa couleur. Mochi arrondit la forme, lui pose les yeux et l'ajuste pour qu'il porte ses accessoires.</p></div>
+      <div><h3>Objectifs</h3><p>« Courir un 10 km en mars » : Mochi le découpe en petites étapes et leur trouve des créneaux dans ta semaine. Tes cours, réunions et rendez-vous ne bougent jamais, et il demande avant de déplacer quoi que ce soit.</p></div>
+      <div><h3>Défi avec un ami</h3><p>Choisissez chacun une habitude. Quand ton ami coche la sienne, son personnage vient faire un tour sur ton Dock. Par un dossier iCloud partagé, sans serveur.</p></div>
+    </div>
+    <div class="strip" aria-label="Des Mochi dessinés à la main">
+      <img src="img/perso1.png" alt=""><img src="img/perso2.png" alt=""><img src="img/perso3.png" alt="">
+      <img src="img/perso4.png" alt=""><img src="img/perso5.png" alt="">
+    </div>
+    <div class="pair">
+      <figure style="margin:0"><img src="img/objectifs.jpg" alt="La page Objectifs : les étapes d'un objectif et leurs créneaux" loading="lazy"><figcaption>Un objectif, ses étapes, leurs créneaux</figcaption></figure>
+      <figure style="margin:0"><img src="img/planning.jpg" alt="La proposition de planning, avec les déplacements à accepter" loading="lazy"><figcaption>Rien ne bouge sans ton accord</figcaption></figure>
+    </div>
+  </div>
+</section>
 
 <section>
   <div class="wrap">
