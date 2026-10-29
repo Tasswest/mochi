@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mochi · Confidentialité</title>
+<meta name="description" content="Ce que Mochi fait de tes données, sur Mac et sur iPhone : rien ne sort de chez toi.">
+<link rel="icon" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f2ede3; --ink: #1d1b18; --soft: #6f6a62; --faint: #a39d92; --rule: #d6cfc2; --accent: #e5733a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --paper: #1c1a17; --ink: #ece6da; --soft: #a8a194; --faint: #6f6a62; --rule: #36322c; }
+  }
+  :root[data-theme="dark"] { --paper: #1c1a17; --ink: #ece6da; --soft: #a8a194; --faint: #6f6a62; --rule: #36322c; }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: "Newsreader", Georgia, serif; font-size: 19px; line-height: 1.6; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 56px 16px 80px; }
+  .caps { font: 500 11px/1 "IBM Plex Mono", ui-monospace, monospace; letter-spacing: .16em; text-transform: uppercase; color: var(--soft); }
+  h1 { font-weight: 400; font-size: clamp(40px, 8vw, 60px); line-height: 1; margin: 12px 0 18px; letter-spacing: -.02em; }
+  .lede { font-style: italic; color: var(--soft); font-size: 21px; margin: 0 0 40px; }
+  h2 { font-weight: 500; font-size: 22px; margin: 40px 0 8px; }
+  p, li { color: var(--ink); }
+  ul { padding-left: 1.2em; } li { margin: 6px 0; }
+  a { color: var(--ink); text-decoration-color: var(--accent); text-underline-offset: 3px; }
+  footer { margin-top: 56px; padding-top: 18px; border-top: 1px solid var(--rule); color: var(--faint); font: 400 12px/1.6 "IBM Plex Mono", monospace; }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <a class="caps" href="./">← Mochi</a>
+  <h1>Confidentialité</h1>
+  <p class="lede">Mochi ne collecte rien sur toi. Pas de compte, pas de publicité, pas de pistage, pas de statistiques.</p>
+
+  <h2>Ce qui reste sur ton appareil</h2>
+  <p>Tout ce que tu notes dans Mochi (habitudes, tâches, créneaux, échéances, budget, journal, conversations, fichiers) est enregistré sur ton Mac ou ton iPhone, et nulle part ailleurs. Le développeur n'y a pas accès.</p>
+
+  <h2>Quand tu relies tes appareils, ou un ami</h2>
+  <p>Si tu relies ton iPhone à ton Mac, ou si tu partages une habitude avec un ami par un code d'invitation, les données concernées passent par les serveurs d'Apple (CloudKit). Elles y sont <strong>chiffrées avec une clé tirée de ton code</strong>, avant de quitter ton appareil : sans le code, ni Apple ni le développeur ne peuvent les lire. Le code lui-même n'est jamais envoyé. Rien n'est pris sur ton stockage iCloud.</p>
+  <p>Ce qui voyage vers l'iPhone se limite à ce qu'il affiche : habitudes, tâches, créneaux et échéances. Ni le budget, ni le journal, ni les conversations, ni les fichiers.</p>
+
+  <h2>L'assistant (sur Mac)</h2>
+  <p>L'assistant de Mochi n'est actif que si tu ajoutes toi-même une clé d'un service d'IA (Anthropic, NVIDIA, OpenAI…). Tes messages vont alors directement de ton Mac à ce service, selon ses propres conditions. Mochi n'a pas de serveur intermédiaire.</p>
+
+  <h2>Les achats (sur iPhone)</h2>
+  <p>L'essai gratuit et l'achat de Mochi complet passent par l'App Store. Apple traite le paiement ; Mochi apprend seulement si l'achat existe, jamais qui tu es ni comment tu as payé.</p>
+
+  <h2>Météo</h2>
+  <p>Si tu indiques une ville pour la météo du matin (sur Mac), Mochi interroge Open-Meteo avec les coordonnées de cette ville, sans aucun identifiant.</p>
+
+  <h2>Supprimer tes données</h2>
+  <p>Supprimer l'app efface tout ce qu'elle garde sur l'appareil. Un lien entre appareils ou avec un ami s'arrête depuis les réglages de Mochi, ce qui retire ta part du serveur.</p>
+
+  <h2>Contact</h2>
+  <p>Une question : <a href="https://github.com/Tasswest/mochi/issues">ouvre un ticket sur GitHub</a>.</p>
+
+  <footer>Mise à jour le 29 octobre 2026.</footer>
+</main>
+</body>
+</html>
