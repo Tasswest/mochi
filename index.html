@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mochi</title>
 <meta name="description" content="Un petit compagnon pour Mac qui vit sur ton Dock et t'aide à tenir ta vie en ordre : habitudes, agenda, études, budget.">
+<script>
+  // Hors francophones : la version anglaise (sauf si on a choisi le français).
+  try {
+    var first = (navigator.languages || [navigator.language || '']).filter(function (l) { return /^(fr|en)/i.test(l); })[0] || 'en';
+    if (!localStorage.getItem('mochi-lang') && !/^fr/i.test(first)) location.replace('en.html');
+  } catch (e) {}
+</script>
 <link rel="icon" href="img/icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -66,6 +73,11 @@
   .new p { margin: 0; color: var(--soft); font-size: 17px; }
   .tag { display: inline-block; font: 500 10px/1 "IBM Plex Mono", monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--paper); background: var(--accent); padding: 4px 6px; border-radius: 3px; vertical-align: 3px; margin-left: 8px; }
   footer { padding: 36px 0 60px; color: var(--faint); font-size: 15px; }
+  .phones { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; max-width: 760px; }
+  .phones img { width: 100%; height: auto; display: block; border: 1px solid var(--rule); border-radius: 14px; }
+  @media (max-width: 680px) { .phones { gap: 8px; } }
+  .lang { float: right; font: 500 11px/1 "IBM Plex Mono", ui-monospace, monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--soft); }
+  .lang a { color: inherit; }
   a { color: inherit; }
 </style>
 </head>
@@ -76,17 +88,36 @@
       <img src="img/drop.png" alt=""><img src="img/triangle.png" alt=""><img src="img/cloud.png" alt="">
       <img src="img/ball.png" alt=""><img src="img/pill.png" alt=""><img src="img/flower.png" alt="">
     </div>
-    <div class="caps">Pour Mac · gratuit</div>
+    <a class="lang" href="en.html" onclick="try{localStorage.setItem('mochi-lang','en')}catch(e){}">English</a>
+    <div class="caps">Pour Mac · gratuit — et sur iPhone</div>
     <h1>Mochi</h1>
     <p class="lede">Un petit compagnon qui vit sur ton Dock. Il tient tes habitudes, ton agenda, tes partiels et ton budget, et il change de mine selon ta semaine.</p>
     <a class="download" href="https://github.com/Tasswest/mochi/releases/latest/download/Mochi.dmg">↓ Télécharger Mochi</a>
-    <div class="meta">Version 1.8.1 · macOS 14 Sonoma ou plus récent · puce Apple ou Intel · signé et vérifié par Apple</div>
+    <div class="meta">Version 1.9 · macOS 14 Sonoma ou plus récent · puce Apple ou Intel · signé et vérifié par Apple</div>
     <figure>
       <img src="img/aujourdhui.jpg" alt="La page Aujourd'hui de Mochi : habitudes, tâches, échéances et emploi du temps" width="1600" height="1460">
       <figcaption>La page « Aujourd'hui » : ce qui compte, sur une seule feuille.</figcaption>
     </figure>
   </div>
 </header>
+
+<section id="iphone">
+  <div class="wrap">
+    <div class="caps">Nouveau · bientôt sur l'App Store</div>
+    <h2>Mochi dans ta poche</h2>
+    <div class="new">
+      <div><h3>Ta journée sur l'iPhone</h3><p>Habitudes, tâches et échéances sur une seule page. Il marche tout seul, sans Mac et sans compte.</p></div>
+      <div><h3>Relié à ton Mac</h3><p>Un code ou un QR code, et tout ton carnet te suit : ce que tu coches, crées ou modifies d'un côté arrive de l'autre en quelques secondes. Chiffré avec ton code, sans prendre de stockage iCloud.</p></div>
+      <div><h3>Des rappels à ton heure</h3><p>« Lire 20 pages » à 21 h, seulement les jours où c'est prévu et si ce n'est pas déjà coché.</p></div>
+      <div><h3>Gratuit, puis un seul achat</h3><p>La version gratuite garde 3 habitudes, 3 tâches et 3 échéances. Essaie tout pendant 14 jours ; ensuite, un achat unique, sans abonnement. Mochi pour Mac reste gratuit.</p></div>
+    </div>
+    <div class="phones">
+      <img src="img/iphone/fr-1.jpg" alt="La journée sur l'iPhone" loading="lazy">
+      <img src="img/iphone/fr-2.jpg" alt="Mochi sur l'iPhone seul" loading="lazy">
+      <img src="img/iphone/fr-3.jpg" alt="Les widgets de Mochi" loading="lazy">
+    </div>
+  </div>
+</section>
 
 <section>
   <div class="wrap">
@@ -202,7 +233,7 @@
 </section>
 
 <footer>
-  <div class="wrap">Mochi · fait à la main, pour Mac. Un souci ? Dans Mochi : menu du personnage → « Signaler un problème ».</div>
+  <div class="wrap">Mochi · fait à la main. Un souci ? Dans Mochi : menu du personnage → « Signaler un problème ». · <a href="confidentialite.html">Confidentialité</a></div>
 </footer>
 </body>
 </html>

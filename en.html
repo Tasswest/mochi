@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mochi</title>
+<meta name="description" content="A little companion for your Mac that lives on your Dock and helps you keep your life in order: habits, agenda, studies, budget.">
+<link rel="icon" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f2ede3; --paper-deep: #e9e2d4; --ink: #1d1b18; --soft: #6f6a62; --faint: #a39d92;
+    --rule: #d6cfc2; --accent: #e5733a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #1c1a17; --paper-deep: #15130f; --ink: #ece6da; --soft: #a8a194; --faint: #6f6a62; --rule: #36322c;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #1c1a17; --paper-deep: #15130f; --ink: #ece6da; --soft: #a8a194; --faint: #6f6a62; --rule: #36322c;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: "Newsreader", Georgia, serif; font-size: 19px; line-height: 1.55;
+  }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 16px; }
+  .caps { font: 500 11px/1 "IBM Plex Mono", ui-monospace, monospace; letter-spacing: .16em; text-transform: uppercase; color: var(--soft); }
+  header { padding: 72px 0 40px; border-bottom: 1px solid var(--rule); }
+  .row { display: flex; gap: 18px; align-items: flex-end; flex-wrap: wrap; }
+  .blobs { display: flex; gap: 10px; margin-bottom: 36px; }
+  .blobs img { width: 46px; height: 46px; animation: bob 3.4s ease-in-out infinite; }
+  .blobs img:nth-child(2) { animation-delay: .4s } .blobs img:nth-child(3) { animation-delay: .8s }
+  .blobs img:nth-child(4) { animation-delay: 1.2s } .blobs img:nth-child(5) { animation-delay: 1.6s } .blobs img:nth-child(6) { animation-delay: 2s }
+  @keyframes bob { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(-5px) } }
+  @media (prefers-reduced-motion: reduce) { .blobs img { animation: none } }
+  h1 { font-weight: 400; font-size: clamp(54px, 11vw, 96px); line-height: .95; margin: 10px 0 18px; letter-spacing: -.02em; }
+  .lede { font-style: italic; color: var(--soft); font-size: 22px; max-width: 34em; margin: 0 0 32px; }
+  .download {
+    display: inline-flex; align-items: center; gap: 12px; padding: 14px 22px;
+    background: var(--ink); color: var(--paper); text-decoration: none; border-radius: 4px;
+    font: 500 13px/1 "IBM Plex Mono", monospace; letter-spacing: .14em; text-transform: uppercase;
+  }
+  .download:hover { background: var(--accent); color: #fff; }
+  .meta { color: var(--faint); font: 400 12px/1.5 "IBM Plex Mono", monospace; margin-top: 14px; }
+  figure { margin: 48px 0 0; }
+  figure img { width: 100%; height: auto; display: block; border: 1px solid var(--rule); border-radius: 6px; }
+  figcaption { margin-top: 10px; font-style: italic; color: var(--soft); font-size: 16px; }
+  section { padding: 56px 0; border-bottom: 1px solid var(--rule); }
+  h2 { font-weight: 400; font-size: 34px; margin: 8px 0 22px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px 40px; }
+  .grid h3 { font-weight: 500; font-size: 20px; margin: 0 0 4px; }
+  .grid p { margin: 0; color: var(--soft); font-size: 17px; }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 28px; }
+  @media (max-width: 680px) { .pair { grid-template-columns: 1fr } header { padding-top: 48px } }
+  ol { padding-left: 1.2em; } li { margin: 6px 0; }
+  code { font: 14px "IBM Plex Mono", monospace; background: var(--paper-deep); padding: 2px 6px; border-radius: 3px; word-break: break-all; }
+  .strip { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; background: #f2ede3; border: 1px solid var(--rule); border-radius: 6px; padding: 10px; margin-top: 28px; }
+  .strip img { width: 120px; height: 120px; }
+  .new { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px 40px; }
+  .new h3 { font-weight: 500; font-size: 22px; margin: 0 0 6px; }
+  .new p { margin: 0; color: var(--soft); font-size: 17px; }
+  .tag { display: inline-block; font: 500 10px/1 "IBM Plex Mono", monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--paper); background: var(--accent); padding: 4px 6px; border-radius: 3px; vertical-align: 3px; margin-left: 8px; }
+  footer { padding: 36px 0 60px; color: var(--faint); font-size: 15px; }
+  .phones { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; max-width: 760px; }
+  .phones img { width: 100%; height: auto; display: block; border: 1px solid var(--rule); border-radius: 14px; }
+  @media (max-width: 680px) { .phones { gap: 8px; } }
+  .lang { float: right; font: 500 11px/1 "IBM Plex Mono", ui-monospace, monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--soft); }
+  .lang a { color: inherit; }
+  a { color: inherit; }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="blobs" aria-hidden="true">
+      <img src="img/drop.png" alt=""><img src="img/triangle.png" alt=""><img src="img/cloud.png" alt="">
+      <img src="img/ball.png" alt=""><img src="img/pill.png" alt=""><img src="img/flower.png" alt="">
+    </div>
+    <a class="lang" href="./" onclick="try{localStorage.setItem('mochi-lang','fr')}catch(e){}">Français</a>
+    <div class="caps">For Mac · free — and on iPhone</div>
+    <h1>Mochi</h1>
+    <p class="lede">A little companion that lives on your Dock. It keeps your habits, agenda, exams and budget, and its mood follows your week.</p>
+    <a class="download" href="https://github.com/Tasswest/mochi/releases/latest/download/Mochi.dmg">↓ Download Mochi</a>
+    <div class="meta">Version 1.9 · macOS 14 Sonoma or later · Apple silicon or Intel · signed and notarized by Apple</div>
+    <figure>
+      <img src="img/en/today.jpg" alt="Mochi's Today page: habits, tasks, deadlines and timetable">
+      <figcaption>The Today page: what matters, on a single sheet.</figcaption>
+    </figure>
+  </div>
+</header>
+
+<section id="iphone">
+  <div class="wrap">
+    <div class="caps">New · coming soon to the App Store</div>
+    <h2>Mochi in your pocket</h2>
+    <div class="new">
+      <div><h3>Your day on the iPhone</h3><p>Habits, tasks and deadlines on one page. It works on its own, with no Mac and no account.</p></div>
+      <div><h3>Linked to your Mac</h3><p>A code or a QR code, and your whole notebook follows you: what you tick, create or change on one side reaches the other within seconds. Encrypted with your code, and it doesn't use your iCloud storage.</p></div>
+      <div><h3>Reminders at your time</h3><p>"Read 20 pages" at 9 pm, only on days it's planned and only if it isn't ticked yet.</p></div>
+      <div><h3>Free, then one purchase</h3><p>The free version keeps 3 habits, 3 tasks and 3 deadlines. Try everything for 14 days; after that, a single purchase, no subscription. Mochi for Mac stays free.</p></div>
+    </div>
+    <div class="phones">
+      <img src="img/iphone/en-1.jpg" alt="Your day on the iPhone" loading="lazy">
+      <img src="img/iphone/en-2.jpg" alt="Mochi on the iPhone alone" loading="lazy">
+      <img src="img/iphone/en-3.jpg" alt="Mochi's widgets" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="caps">Studies</div>
+    <h2>Your studies, finally in order</h2>
+    <div class="new">
+      <div><h3>It understands your deadlines</h3><p>In-class exams, work to hand in, personal projects: Mochi works out the type and files each one under the right course, abbreviations included.</p></div>
+      <div><h3>Paste your list</h3><p>All your dates at once, the way you wrote them down. Mochi guesses the type and the course and spots dates already past; you check before adding.</p></div>
+      <div><h3>Revision where it's missing</h3><p>One button suggests sessions for every exam or assignment that doesn't have enough, in your free moments, never on top of a class.</p></div>
+      <div><h3>The study timeline</h3><p>The coming weeks at a glance: classes and holidays, the preparation for each exam or assignment, your revision sessions.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="caps">Together</div>
+    <h2>Habits with friends</h2>
+    <div class="new">
+      <div><h3>At your pace</h3><p>Cleaning twice a month, the dentist twice a year: the habit comes back in Today at the right moment, then waits for the next month or year.</p></div>
+      <div><h3>Share your habits</h3><p>One or several, with one or several friends. A friend shares a habit you don't have? "Add" brings it over in one click, with the same rhythm.</p></div>
+      <div><h3>See how they're doing</h3><p>Next to the habit in Today, and day by day under it in The month. When a friend ticks, their character comes to tell you on your Dock.</p></div>
+      <div><h3>With a simple code</h3><p>"Create a code", send it, your friend pastes it into "Join". Everything is encrypted with the code and goes through Apple's servers without using iCloud storage: neither Apple nor anyone else can read your data.</p></div>
+    </div>
+    <figure style="max-width:420px"><img src="img/visiteur.png" alt="A friend's character visiting, with a scarf and a hat" loading="lazy" style="border:none;background:#f2ede3"><figcaption>Visiting, with accessories</figcaption></figure>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="caps">Your coach</div>
+    <h2>It listens, and it remembers</h2>
+    <div class="new">
+      <div><h3>Good morning, here's your day</h3><p>Each time you open your Mac, Mochi hops up and tells you in a bubble what's ahead: the next class and its room, your tasks, today's habits.</p></div>
+      <div><h3>A real coach for your goals</h3><p>It asks its questions, prepares the full plan up to the date, rest days included, and adjusts it after each session based on how you felt.</p></div>
+      <div><h3>Your preferences</h3><p>Right-click a slot: "on weekdays I don't like running at lunchtime". Mochi remembers and won't plan anything there again.</p></div>
+      <div><h3>Draw your own</h3><p>Trace one outline and pick a colour. Mochi rounds the shape, adds the eyes and fits it to wear accessories.</p></div>
+    </div>
+    <div class="strip" aria-label="Hand-drawn Mochis">
+      <img src="img/perso1.png" alt=""><img src="img/perso2.png" alt=""><img src="img/perso3.png" alt="">
+      <img src="img/perso4.png" alt=""><img src="img/perso5.png" alt="">
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="caps">What it does</div>
+    <h2>A notebook that tidies itself</h2>
+    <div class="grid">
+      <div><h3>Habits</h3><p>Every day, some days, three times a week, twice a month or once a year. A monthly grid, like a bullet journal.</p></div>
+      <div><h3>Mornings</h3><p>When you open your Mac: the weather, your first class and its room, exams coming up. Then mood, energy, motivation.</p></div>
+      <div><h3>Studies</h3><p>Your timetable imported from a PDF, exams, assignments, applications, a timeline of the weeks ahead and a focus timer per subject.</p></div>
+      <div><h3>Budget</h3><p>Drop in your bank statement: expenses are sorted, and the charts show where your money goes.</p></div>
+      <div><h3>⌥ Space</h3><p>From any app: "revise maths Thursday 6 pm". Done. Press twice to dictate.</p></div>
+      <div><h3>Time capsule</h3><p>A letter to yourself, sealed until the day you choose: after exams, in six months, in a year.</p></div>
+    </div>
+    <figure><img src="img/en/month.jpg" alt="Monthly habit tracking" loading="lazy"><figcaption>The month</figcaption></figure>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="caps">The assistant</div>
+    <h2>It talks, if you want it to</h2>
+    <p>Mochi works entirely without AI. To talk to it ("organise my week", "sort this statement"), connect the service you prefer: a free NVIDIA key, Claude, OpenAI, Mistral, Groq, OpenRouter, Gemini, or an AI running on your Mac with LM Studio or Ollama.</p>
+    <p style="color:var(--soft)">Everything stays on your Mac. Only your request to the assistant goes to the service you chose.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="caps">Install</div>
+    <h2>Thirty seconds</h2>
+    <ol>
+      <li>Download <strong>Mochi.dmg</strong> and open it.</li>
+      <li>Drag Mochi into the Applications folder.</li>
+      <li>Open it from Launchpad: the character appears on your Dock.</li>
+    </ol>
+    <p style="color:var(--soft);font-size:17px">Mochi switches to English on its own if your Mac is in English (or in Settings). Received it through WhatsApp and macOS refuses to open it? Download it here instead. Otherwise, in Terminal: <code>xattr -dr com.apple.quarantine /Applications/Mochi.app</code></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Mochi · handmade. A problem? In Mochi: character menu → "Report a problem". · <a href="privacy.html">Privacy</a></div>
+</footer>
+</body>
+</html>
