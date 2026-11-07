@@ -44,6 +44,18 @@
   <p>If you link your iPhone to your Mac, or share a habit with a friend using an invitation code, the data involved goes through Apple's servers (CloudKit). It is <strong>encrypted with a key derived from your code</strong> before it leaves your device: without the code, neither Apple nor the developer can read it. The code itself is never sent. None of your iCloud storage is used. To keep things in sync quickly, Apple may wake the iPhone with a silent notification, which contains none of your data.</p>
   <p>What travels between the Mac and the iPhone is limited to what the iPhone shows and changes: habits, tasks, slots and deadlines. Not the budget, the journal, the conversations or the files.</p>
 
+  <h2>Noting on iPhone</h2>
+  <p>By default, what you note is understood on your iPhone, with nothing sent. If your Mac uses an AI service with your key and you agree to use it on the iPhone too, access to that service travels encrypted with your pairing code and stays in the iPhone's Keychain. Your notes then go directly from the iPhone to that service, under its own terms, with nothing in between. You can stop this in Settings, and access is erased if you unlink the Mac.</p>
+
+  <h2>The brain (on Mac)</h2>
+  <p>What the assistant remembers about you (people, places, tastes, plans), your notes and the summaries of your conversations are stored on your Mac, with the rest of your notebook. Only the part relevant to a message is sent with it to the AI service you chose. Mochi never keeps passwords, codes or account numbers; your health, religion, political views or intimate life only if you ask it to. Everything can be viewed and erased on the Brain page.</p>
+
+  <h2>Integrations (on Mac)</h2>
+  <p>Nothing is connected by default. Each access (Apple Calendar, Gmail, Google Drive, Google Calendar, Strava) is ticked on its own, for reading or writing, and can be turned off at any time. Google and Strava use your own access: you sign in in your browser, the token is kept in your Mac’s Keychain, and your data goes straight from Google or Strava to your Mac, with no Mochi server. What the assistant reads to answer you (an email, a file, an event) is sent to the AI service you chose. Mochi only reads your Strava activities, to tick the matching habit.</p>
+
+  <h2>Apple Health (on iPhone)</h2>
+  <p>If a habit should tick itself with Apple Health, the iPhone app reads only what it needs (workouts, steps, sleep or mindfulness), after your permission. This data stays on your iPhone: only the fact that the box is ticked goes to your linked Mac. It is never used for advertising and never sent to any AI service.</p>
+
   <h2>Reminders (on iPhone)</h2>
   <p>Habit reminders are notifications prepared on your iPhone. Their times stay there and are sent nowhere.</p>
 
@@ -52,6 +64,9 @@
 
   <h2>Purchases (on iPhone)</h2>
   <p>The free trial and the purchase of Mochi Complete go through the App Store. Apple handles the payment; Mochi only learns whether the purchase exists, never who you are or how you paid.</p>
+
+  <h2>Updates (on Mac)</h2>
+  <p>Every 6 hours, Mochi asks GitHub for the latest published version, with no identifier. A new version is only installed when you click “Install”.</p>
 
   <h2>Weather</h2>
   <p>If you enter a city for the morning weather (on Mac), Mochi queries Open-Meteo with that city's coordinates, without any identifier.</p>
@@ -62,7 +77,7 @@
   <h2>Contact</h2>
   <p>A question? <a href="https://github.com/Tasswest/mochi/issues">Open an issue on GitHub</a>.</p>
 
-  <footer>Updated on 30 October 2026. · <a href="confidentialite.html">Français</a></footer>
+  <footer>Updated on 7 November 2026. · <a href="confidentialite.html">Français</a></footer>
 </main>
 </body>
 </html>

@@ -44,6 +44,18 @@
   <p>Si tu relies ton iPhone à ton Mac, ou si tu partages une habitude avec un ami par un code d'invitation, les données concernées passent par les serveurs d'Apple (CloudKit). Elles y sont <strong>chiffrées avec une clé tirée de ton code</strong>, avant de quitter ton appareil : sans le code, ni Apple ni le développeur ne peuvent les lire. Le code lui-même n'est jamais envoyé. Rien n'est pris sur ton stockage iCloud. Pour une synchronisation rapide, Apple peut réveiller l'iPhone par une notification silencieuse, qui ne contient aucune de tes données.</p>
   <p>Ce qui voyage entre le Mac et l'iPhone se limite à ce que l'iPhone affiche et modifie : habitudes, tâches, créneaux et échéances. Ni le budget, ni le journal, ni les conversations, ni les fichiers.</p>
 
+  <h2>Noter sur iPhone</h2>
+  <p>Par défaut, ce que tu notes est compris sur ton iPhone, sans rien envoyer. Si ton Mac utilise un service d'IA avec ta clé et que tu acceptes de l'utiliser aussi sur l'iPhone, l'accès à ce service passe chiffré avec ton code de jumelage et reste dans le Trousseau de l'iPhone. Tes notes vont alors directement de l'iPhone à ce service, selon ses propres conditions, sans intermédiaire. Tu peux l'arrêter dans les réglages, et l'accès est effacé si tu délies le Mac.</p>
+
+  <h2>Le cerveau (sur Mac)</h2>
+  <p>Ce que l'assistant retient de toi (personnes, lieux, goûts, projets), tes notes et les résumés de tes conversations sont enregistrés sur ton Mac, avec le reste du carnet. Seule la partie utile à un message part avec lui vers le service d'IA que tu as choisi. Mochi ne retient ni mot de passe, ni code, ni numéro de compte ; ta santé, ta religion, tes opinions politiques ou ta vie intime seulement si tu le lui demandes. Tout se consulte et s'efface dans la page Cerveau.</p>
+
+  <h2>Les intégrations (sur Mac)</h2>
+  <p>Rien n'est branché par défaut. Chaque accès (Calendrier d'Apple, Gmail, Google Drive, Google Agenda, Strava) se coche à part, en lecture ou en écriture, et se coupe à tout moment. Google et Strava passent par ton propre accès : la connexion se fait dans ton navigateur, le jeton est rangé dans le Trousseau de ton Mac, et tes données vont directement de Google ou de Strava à ton Mac, sans serveur de Mochi. Ce que l'assistant lit pour te répondre (un mail, un fichier, un rendez-vous) est envoyé au service d'IA que tu as choisi. Mochi ne lit que tes activités Strava, pour cocher l'habitude qui va avec.</p>
+
+  <h2>Apple Santé (sur iPhone)</h2>
+  <p>Si une habitude doit se cocher toute seule avec Apple Santé, l'app iPhone lit seulement ce qu'il faut (entraînements, pas, sommeil ou pleine conscience), après ton accord. Ces données restent sur ton iPhone : seul le fait que la case est cochée part vers ton Mac relié. Elles ne servent jamais à la publicité et ne sont envoyées à aucun service d'IA.</p>
+
   <h2>Les rappels (sur iPhone)</h2>
   <p>Les rappels d'habitudes sont des notifications préparées sur ton iPhone. Leurs heures y restent : elles ne sont envoyées nulle part.</p>
 
@@ -52,6 +64,9 @@
 
   <h2>Les achats (sur iPhone)</h2>
   <p>L'essai gratuit et l'achat de Mochi complet passent par l'App Store. Apple traite le paiement ; Mochi apprend seulement si l'achat existe, jamais qui tu es ni comment tu as payé.</p>
+
+  <h2>Les mises à jour (sur Mac)</h2>
+  <p>Toutes les 6 heures, Mochi demande à GitHub quelle est la dernière version publiée, sans aucun identifiant. Une nouvelle version n'est installée que si tu cliques sur « Installer ».</p>
 
   <h2>Météo</h2>
   <p>Si tu indiques une ville pour la météo du matin (sur Mac), Mochi interroge Open-Meteo avec les coordonnées de cette ville, sans aucun identifiant.</p>
@@ -62,7 +77,7 @@
   <h2>Contact</h2>
   <p>Une question : <a href="https://github.com/Tasswest/mochi/issues">ouvre un ticket sur GitHub</a>.</p>
 
-  <footer>Mise à jour le 30 octobre 2026. · <a href="privacy.html">English</a></footer>
+  <footer>Mise à jour le 7 novembre 2026. · <a href="privacy.html">English</a></footer>
 </main>
 </body>
 </html>
